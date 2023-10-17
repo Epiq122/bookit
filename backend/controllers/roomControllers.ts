@@ -3,8 +3,13 @@ import Room from "@/backend/models/room";
 import {nextDev} from "next/dist/cli/next-dev";
 
 export const allRooms = async (req: NextRequest) => {
+    const rooms = await Room.find()
+    const resPerPage: number = 8;
+
     return NextResponse.json({
-        data: "Welcome to my nightmare"
+        success: true,
+        resPerPage,
+        rooms
     })
 }
 
