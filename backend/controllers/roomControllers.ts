@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import Room from "@/backend/models/room";
-import {nextDev} from "next/dist/cli/next-dev";
+
 
 export const allRooms = async (req: NextRequest) => {
     const rooms = await Room.find()
@@ -12,8 +12,6 @@ export const allRooms = async (req: NextRequest) => {
         rooms
     })
 }
-
-
 export const newRoom = async (req: NextRequest) => {
     const body = await req.json()
     const room = await Room.create(body);
