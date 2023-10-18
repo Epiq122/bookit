@@ -68,3 +68,24 @@ export const updateRoom = async (req: NextRequest, {params}: { params: { id: str
         room
     })
 }
+
+// Delete Room => /api/rooms/:id
+export const deleteRoom = async (req: NextRequest, {params}: { params: { id: string } }) => {
+    const room = await Room.findById(params.id)
+
+    if (!room) {
+        return NextResponse.json({
+                message: 'Room not found',
+
+            },
+            {status: 404}
+        );
+    }
+
+    // TODO: Delete images associated with the room
+    await room.deleteOne()
+    return NextResponse.json({
+        success: true,
+        message: 'Room is deleted.'
+    })
+}
