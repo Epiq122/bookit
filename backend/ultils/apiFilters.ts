@@ -1,21 +1,37 @@
 class APIFilters {
     query: any;
-    queryString: any;
+    queryStr: any;
 
-    constructor(query: any, queryString: any) {
+    constructor(query: any, queryStr: any) {
         this.query = query;
-        this.queryString = queryString;
+        this.queryStr = queryStr;
     }
 
     search(): APIFilters {
-        const location = this.queryString?.location ? {
-            address: {
-                $regex: this.queryString.location,
-                $options: 'i',
-
+        const location = this.queryStr?.location
+            ? {
+                address: {
+                    $regex: this.queryStr.location,
+                    $options: "i",
+                },
             }
-        } : {}
-        this.query = this.query.find({...location})
+            : {};
+
+        this.query = this.query.find({...location});
+        return this;
+    }
+
+    filter(): APIFilters {
+        const queryCopy = {...this.queryStr}
+        console.log(queryCopy)
+
+        const removeFields = ['location']
+        removeFields.forEach(el => delete queryCopy[el])
+
+        
+        this.query = this.query.find(queryCopy)
+
+
         return this
     }
 }
