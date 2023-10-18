@@ -23,7 +23,6 @@ export const catchAsyncErrors = (handler: HandlerFunction) => async (req: NextRe
             error.statusCode = 400;
         }
 
-
         return NextResponse.json({
             message: error.message,
         }, {
