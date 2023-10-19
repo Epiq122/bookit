@@ -5,7 +5,7 @@ import {Inter} from 'next/font/google'
 import './globals.css'
 import Head from "next/head";
 import React from "react";
-import {GlobalProvider} from "@/app/GlobalProvider";
+import {GlobalProvider} from '@/app/GlobalProvider';
 import Script from "next/script";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
