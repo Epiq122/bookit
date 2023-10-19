@@ -4,8 +4,8 @@ import React, {useEffect} from 'react'
 import RoomItem from "@/components/room/RoomItem";
 import toast from "react-hot-toast";
 
-const Home = () => {
-   
+const Home = ({data}) => {
+
     return (
         <div>
 
