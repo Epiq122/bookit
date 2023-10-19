@@ -1,6 +1,10 @@
 import Home from "@/components/Home";
 import Error from "@/app/error";
 
+export const metadata = {
+  title: "Homepage - BookIT",
+};
+
 async function getRooms() {
   const res = await fetch(`${process.env.API_URL}/rooms`);
   return res.json();
